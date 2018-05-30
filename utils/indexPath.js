@@ -1,5 +1,6 @@
 //@ts-check
-export class IndexPath {
+//@ts-ignore
+module.exports = class IndexPath {
     /**
      * 
      * @param {number} row 
@@ -14,6 +15,3 @@ export class IndexPath {
         return `${this.column}${this.row}`
     }
 }
-
-var path = new IndexPath(1, "B")
-console.log(path.range())

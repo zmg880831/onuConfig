@@ -1,6 +1,9 @@
 // playground javascript
-
+//@ts-check
+//@ts-ignore
 const XLSX = require('xlsx')
+//@ts-ignore
+const IndexPath = require('./utils/indexPath')
 
 var workbook = XLSX.readFile('./service.xlsx')
 
@@ -9,6 +12,6 @@ console.log(sheetName)
 
 var workSheet = workbook.Sheets[sheetName]
 
-for (const cell in workSheet) {
-    console.log(cell)
-}
+
+var indexPath = new IndexPath(1, "C")
+console.log(indexPath)

@@ -11,7 +11,7 @@ module.exports = class IndexPath {
         this.column = column
     }
 
-    range() {
+    get range() {
         return `${this.column}${this.row}`
     }
 }

@@ -5,13 +5,50 @@ const XLSX = require('xlsx')
 //@ts-ignore
 const IndexPath = require('./utils/indexPath')
 
+// generating alphabet array
+/**
+ * 
+ * @param {string} start 
+ * @param {string} end 
+ */
+function alphabetArray(start, end) {
+    let startIndex = start.charCodeAt(0)
+    let endIndex = end.charCodeAt(0)
+    var count = endIndex - startIndex + 1
+    let array = Array(count).fill("")
+
+    let mapped = array.map((v, i) => {
+        return String.fromCharCode(i + startIndex)
+    })
+    return mapped
+}
+
+function numberArray(start, end) {
+    var count = end - start + 1
+    let array = Array(count).fill(0)
+
+    let mapped = array.map((_, i) => {
+        return i + start
+    })
+    return mapped
+}
+
+
+
+
 var workbook = XLSX.readFile('./service.xlsx')
 
 var sheetName = workbook.SheetNames[0]
-console.log(sheetName)
+// console.log(sheetName)
 
 var workSheet = workbook.Sheets[sheetName]
 
+for (const row of numberArray(1, 5)) {
+    console.log(`row ${row}: `)
+    for (const column of alphabetArray("A", "C")) {
+        let range = new IndexPath(row, column).range
+        console.log(workSheet[range].v)       
+    }
+    console.log("        ")
+}
 
-var indexPath = new IndexPath(1, "C")
-console.log(indexPath)

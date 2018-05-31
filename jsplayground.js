@@ -3,7 +3,7 @@
 //@ts-ignore
 const XLSX = require('xlsx')
 //@ts-ignore
-const IndexPath = require('./utils/indexPath')
+const IndexPath = require('./utils/utilizations').IndexPath
 
 // generating alphabet array
 /**
@@ -71,7 +71,6 @@ const columnPort = "B"
 /**
  * 
  * @param {workSheet} workSheet 
- * @param {IndexPath} indexPath 
  */
 function readCell(workSheet, indexPath) {
     let cellIndex = indexPath.range

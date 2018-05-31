@@ -23,7 +23,13 @@ function alphabetArray(start, end) {
     return mapped
 }
 
-function numberArray(start, end) {
+// generating alphabet array
+/**
+ * 
+ * @param {number} start 
+ * @param {number} end 
+ */
+function numberRange(start, end) {
     var count = end - start + 1
     let array = Array(count).fill(0)
 
@@ -38,7 +44,7 @@ function numberArray(start, end) {
  * @param {string} onu 
  */
 function onuInterface(onu) {
-    let [ports, onuid]= onu.split("_")
+    let [ports, onuid] = onu.split("_")
     let [frame, board, port] = ports.split("/")
     return {
         frame: frame,
@@ -48,17 +54,42 @@ function onuInterface(onu) {
     }
 }
 
-let onuInfo = onuInterface("0/1/6_8")
-console.log(onuInfo)
 
 
 
-var workbook = XLSX.readFile('./service.xlsx')
+var workbook = XLSX.readFile('./wifi.xls')
 
-var sheetName = workbook.SheetNames[0]
+var sheetName = workbook.SheetNames[3]
 // console.log(sheetName)
 
-var workSheet = workbook.Sheets[sheetName]
+var workSheet = workbook.Sheets["景山2"]
+
+// read a line 
+const columnPonType = "A"
+const columnPort = "B"
+
+/**
+ * 
+ * @param {workSheet} workSheet 
+ * @param {IndexPath} indexPath 
+ */
+function readCell(workSheet, indexPath) {
+    let cellIndex = indexPath.range
+    let cell = workSheet[cellIndex]
+    if (cell != undefined) {
+        return cell.v
+    }
+    return "no value here"
+}
+
+console.log(sheetName)
+for (const row of numberRange(300, 500)) {
+    let value = readCell(workSheet, new IndexPath(row, "D"))
+    console.log(row, value)
+}
+
+
+
 
 // for (const row of numberArray(1, 5)) {
 //     console.log(`row ${row}: `)
@@ -68,4 +99,3 @@ var workSheet = workbook.Sheets[sheetName]
 //     }
 //     console.log("        ")
 // }
-

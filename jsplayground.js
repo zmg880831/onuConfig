@@ -83,9 +83,11 @@ function readCell(workSheet, indexPath) {
 }
 
 console.log(sheetName)
-for (const row of numberRange(300, 500)) {
-    let value = readCell(workSheet, new IndexPath(row, "D"))
-    console.log(row, value)
+for (const row of numberRange(300, 320)) {
+    let value = readCell(workSheet, new IndexPath(row, "B"))
+    let onuInfo = onuInterface(value)
+    console.log(row, onuInfo.board, onuInfo.port, onuInfo.onuid)
+    console.log(`service port add ${onuInfo.board} ${onuInfo.board} onuid ${onuInfo.onuid} transparent`)
 }
 
 

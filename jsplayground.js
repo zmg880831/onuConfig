@@ -4,6 +4,8 @@
 const XLSX = require('xlsx')
 //@ts-ignore
 const IndexPath = require('./utils/utilizations').IndexPath
+// @ts-ignore
+const sequenceThrough = require('./utils/utilizations').sequenceThrough
 
 // generating alphabet array
 /**
@@ -23,21 +25,6 @@ function alphabetArray(start, end) {
     return mapped
 }
 
-// generating alphabet array
-/**
- * 
- * @param {number} start 
- * @param {number} end 
- */
-function numberRange(start, end) {
-    var count = end - start + 1
-    let array = Array(count).fill(0)
-
-    let mapped = array.map((_, i) => {
-        return i + start
-    })
-    return mapped
-}
 
 /**
  * 
@@ -82,7 +69,7 @@ function readCell(workSheet, indexPath) {
 }
 
 console.log(sheetName)
-for (const row of numberRange(300, 320)) {
+for (const row of sequenceThrough(300, 310)) {
     let value = readCell(workSheet, new IndexPath(row, "B"))
     let onuInfo = onuInterface(value)
     console.log(row, onuInfo.board, onuInfo.port, onuInfo.onuid)

@@ -4,6 +4,18 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "TS Test",
+            "program": "${workspaceFolder}/test/tsTest.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Info Conversion TS",
+            "program": "${workspaceFolder}/utilsTS/InfoConversion.js"
+        },
     {
         "type": "node",
         "request": "launch",

@@ -3,9 +3,9 @@
 //@ts-ignore
 const XLSX = require('xlsx')
 //@ts-ignore
-const IndexPath = require('./utils/utilizations').IndexPath
+const IndexPath = require('./util/utilization').IndexPath
 // @ts-ignore
-const sequenceThrough = require('./utils/utilizations').sequenceThrough
+const sequenceThrough = require('./util/utilization').sequenceThrough
 
 // generating alphabet array
 /**

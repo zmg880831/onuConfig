@@ -1,8 +1,6 @@
 // Excel range index path helper function
 export class IndexPath {
-    row: number
-    column: string
-    constructor(row: number, column: string) {
+    constructor(public row: number,public column: string) {
         this.row = row
         this.column = column
     }
@@ -19,3 +17,8 @@ export function sequenceThrough(start: number, end: number): number[] {
     }
     return seq
 }
+
+
+console.log("Typescript Utilization")
+let indexPath = new IndexPath(3, "A")
+console.log(indexPath.range)

@@ -5,6 +5,8 @@ var IndexPath = /** @class */ (function () {
     function IndexPath(row, column) {
         this.row = row;
         this.column = column;
+        this.row = row;
+        this.column = column;
     }
     Object.defineProperty(IndexPath.prototype, "range", {
         get: function () {
@@ -25,3 +27,6 @@ function sequenceThrough(start, end) {
     return seq;
 }
 exports.sequenceThrough = sequenceThrough;
+console.log("Typescript Utilization");
+var indexPath = new IndexPath(3, "A");
+console.log(indexPath.range);

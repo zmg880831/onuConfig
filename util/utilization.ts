@@ -1,6 +1,8 @@
 // Excel range index path helper function
 export class IndexPath {
-    constructor(public row: number,public column: string) {
+    row: number
+    column: string
+    constructor(row: number, column: string) {
         this.row = row
         this.column = column
     }
@@ -18,7 +20,25 @@ export function sequenceThrough(start: number, end: number): number[] {
     return seq
 }
 
+// onu record model
+interface Onu {
+    vlan: number,
+    mac: string,
+    service: String,
+    frame: number,
+    board: number,
+    port: number,
+    ontId: number,
+}
 
-console.log("Typescript Utilization")
-let indexPath = new IndexPath(3, "A")
-console.log(indexPath.range)
+let onu1: Onu = {
+    vlan: 3007,
+    mac: 'AE03-2108-37FE',
+    service: '兴海组团青少年活动中心',
+    frame: 0,
+    board: 1,
+    port: 3,
+    ontId: 18,
+}
+
+console.log(onu1)

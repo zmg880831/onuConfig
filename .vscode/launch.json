@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Utilizations",
-            "program": "${workspaceFolder}/utils/utilizations.js"
+            "program": "${workspaceFolder}/util/utilization.js"
         },
         {
             "type": "node",

@@ -5,8 +5,6 @@ var IndexPath = /** @class */ (function () {
     function IndexPath(row, column) {
         this.row = row;
         this.column = column;
-        this.row = row;
-        this.column = column;
     }
     Object.defineProperty(IndexPath.prototype, "range", {
         get: function () {
@@ -27,6 +25,13 @@ function sequenceThrough(start, end) {
     return seq;
 }
 exports.sequenceThrough = sequenceThrough;
-console.log("Typescript Utilization");
-var indexPath = new IndexPath(3, "A");
-console.log(indexPath.range);
+var onu1 = {
+    vlan: 3007,
+    mac: 'AE03-2108-37FE',
+    service: '兴海组团青少年活动中心',
+    frame: 0,
+    board: 1,
+    port: 3,
+    ontId: 18,
+};
+console.log(onu1);

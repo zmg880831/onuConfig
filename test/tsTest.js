@@ -21,5 +21,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // }
 // console.log(s)
 var pinyin_1 = __importDefault(require("pinyin"));
-var converted = pinyin_1.default("中国").join("-");
+var converted = pinyin_1.default("中国", {
+    style: pinyin_1.default.STYLE_TONE2,
+}).join("-");
 console.log(converted);

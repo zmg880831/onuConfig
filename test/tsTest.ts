@@ -20,5 +20,10 @@
 
 import pinyin from 'pinyin'
 
-let converted = pinyin("中国").join("-")
+let converted = pinyin(
+    "中国",
+    {
+        style: pinyin.STYLE_TONE2,
+    }
+).join("-")
 console.log(converted)

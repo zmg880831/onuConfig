@@ -1,4 +1,3 @@
-"use strict";
 // const toIntImported = require('../utilsTS/InfoConversion')
 // let converted = toIntImported.toInt("hehe")
 // console.log(converted)
@@ -11,15 +10,15 @@
 //-------------------------------------------------------
 // @ts-ignore
 // const seq = require('../util/utilization').sequenceThrough
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
+
 // let s = seq(1, 5)
 // for (const i of s) {
 //     console.log(i)
 // }
 // console.log(s)
-var pinyin_1 = __importDefault(require("pinyin"));
-var converted = pinyin_1.default("中国").join("-");
-console.log(converted);
+
+
+import pinyin from 'pinyin'
+
+let converted = pinyin("中国").join("-")
+console.log(converted)

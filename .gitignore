@@ -1,4 +1,5 @@
 service.xlsx
 ~$service.xlsx
 wifi.xls
-compare.xls
+*.xls
+*.xlsx

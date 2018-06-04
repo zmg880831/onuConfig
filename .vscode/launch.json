@@ -7,6 +7,12 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "excel collector",
+            "program": "${workspaceFolder}/excelCollector.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Utilizations",
             "program": "${workspaceFolder}/util/utilization.js"
         },

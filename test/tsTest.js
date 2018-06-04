@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use strict";
 // const toIntImported = require('../utilsTS/InfoConversion')
 // let converted = toIntImported.toInt("hehe")

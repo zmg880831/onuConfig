@@ -20,13 +20,22 @@ function sequenceThrough(start, end) {
     return seq;
 }
 exports.sequenceThrough = sequenceThrough;
+<<<<<<< HEAD
 let onu1 = {
+=======
+// onu record model
+var Onu = /** @class */ (function () {
+    function Onu(vlan, mac) {
+        this.vlan = vlan;
+        this.mac = mac;
+        this.vlan = vlan;
+        this.mac = mac;
+    }
+    return Onu;
+}());
+exports.Onu = Onu;
+var onu1 = {
+>>>>>>> b6703b09d541676047d19864e977e52918a3f7cf
     vlan: 3007,
     mac: 'AE03-2108-37FE',
-    service: '兴海组团青少年活动中心',
-    frame: 0,
-    board: 1,
-    port: 3,
-    ontId: 18,
 };
-console.log(onu1);

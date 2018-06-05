@@ -23,20 +23,20 @@ export function sequenceThrough(start: number, end: number): number[] {
 // onu record model
 export class Onu {
     constructor(
-        public vlan: number,
-        public mac: string
+        public service: string,
+        public customer: string
     ) {
-        this.vlan = vlan
-        this.mac = mac
+        this.service = service
+        this.customer = customer
     }
 }
 
-let onu1: Onu = {
-    vlan: 3007,
-    mac: 'AE03-2108-37FE',
+// let onu1: Onu = {
+//     service: 'hello world',
+//     mac: 'AE03-2108-37FE',
     // service: '兴海组团青少年活动中心',
     // frame: 0,
     // board: 1,
     // port: 3,
     // ontId: 18,
-}
+// }

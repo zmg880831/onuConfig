@@ -52,16 +52,23 @@ async function run() {
     port: 23,
     loginPrompt: /User name:/,
     passwordPrompt: /User password:/,
-    shellPrompt: /5683/,
+    shellPrompt: /WZCATV/,
     username: 'wzcatv',
     password: 'wzcatv703',
     timeout: 1500
   }
 
+  console.log("fucking test")
   let cnct = await connection.connect(params)
-  console.log(cnct)
+  let res = await connection.exec('enable\n')
+  console.log(res)
+  // await connection.exec('display version\n')
+  // let version = await connection.exec('\n')
+  // console.log(version)
 
-  let res = await connection.exec('display current\n')
+  await connection.exec('display ont info 0 1 2 8\n')
+  let ontInfomation = await connection.exec('\n')
+  console.log(ontInfomation)
 }
 
 run()

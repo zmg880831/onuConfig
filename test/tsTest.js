@@ -57,13 +57,16 @@ function run() {
             password: 'wzcatv703',
             timeout: 1500
         };
+        console.log("fucking test");
         let cnct = yield connection.connect(params);
-        console.log(cnct);
         let res = yield connection.exec('enable\n');
-        console.log(res)
-        let version0 = yield connection.exec('display ont info 0 1 2 1\n');
-        let version1 = yield connection.exec('\n');
-        console.log(version1)
+        console.log(res);
+        // await connection.exec('display version\n')
+        // let version = await connection.exec('\n')
+        // console.log(version)
+        yield connection.exec('display ont info 0 1 2 8\n');
+        let ontInfomation = yield connection.exec('\n');
+        console.log(ontInfomation);
     });
 }
 run();

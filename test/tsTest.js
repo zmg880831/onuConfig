@@ -61,7 +61,7 @@ function run() {
         console.log(cnct);
         let res = yield connection.exec('enable\n');
         console.log(res)
-        let version0 = yield connection.exec('display version\n');
+        let version0 = yield connection.exec('display ont info 0 1 2 1\n');
         let version1 = yield connection.exec('\n');
         console.log(version1)
     });

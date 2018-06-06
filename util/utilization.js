@@ -22,11 +22,13 @@ function sequenceThrough(start, end) {
 exports.sequenceThrough = sequenceThrough;
 // onu record model
 class Onu {
-    constructor(service, customer) {
+    constructor(service, customer, ponport) {
         this.service = service;
         this.customer = customer;
+        this.ponport = ponport;
         this.service = service;
         this.customer = customer;
+        this.ponport = ponport;
     }
 }
 exports.Onu = Onu;

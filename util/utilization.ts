@@ -24,10 +24,12 @@ export function sequenceThrough(start: number, end: number): number[] {
 export class Onu {
     constructor(
         public service: string,
-        public customer: string
+        public customer: string,
+        public ponport: string
     ) {
         this.service = service
         this.customer = customer
+        this.ponport = ponport
     }
 }
 

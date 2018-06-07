@@ -1,5 +1,6 @@
 import { readFile, WorkSheet } from "xlsx";
-import { IndexPath, Onu, sequenceThrough } from "./util/utilization"
+import { Onu, sequenceThrough } from "./util/utilization"
+import { IndexPath } from './lib/excel'
 
 let wifiWorkBook = readFile('./excels/集团客户业务汇总-18-0601.xls')
 
@@ -41,7 +42,7 @@ function readOnuRecord(workSheet: WorkSheet, row: number) {
     }
     let customer = readCell(workSheet, indexPaths.get('customer'))
     let service = readCell(workSheet, indexPaths.get('service'))
-    let onu = new Onu(service, customer)
+    let onu = new Onu(service, customer, "0/0/0_12")
     return onu
 }
 

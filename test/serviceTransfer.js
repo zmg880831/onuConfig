@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const xlsx_1 = require("xlsx");
 const utilization_1 = require("../util/utilization");
+const excel_1 = require("../lib/excel");
 // @ts-ignore
 const Telnet = require('telnet-client');
 let wifiWorkBook = xlsx_1.readFile('./excels/集团客户业务汇总-18-0605.xls');
@@ -48,7 +49,7 @@ function readOnuRecord(workSheet, row) {
             console.log('${key} column not found');
             columnAlphabet = '';
         }
-        return [key, new utilization_1.IndexPath(row, columnAlphabet)];
+        return [key, new excel_1.IndexPath(row, columnAlphabet)];
     }));
     for (const key of indexPaths.keys()) {
         // @ts-ignore

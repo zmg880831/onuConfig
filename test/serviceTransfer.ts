@@ -1,5 +1,6 @@
 import { readFile, WorkSheet } from "xlsx";
-import { IndexPath, Onu, sequenceThrough } from "../util/utilization"
+import { Onu, sequenceThrough } from "../util/utilization"
+import { IndexPath } from '../lib/excel'
 // @ts-ignore
 const Telnet = require('telnet-client')
 

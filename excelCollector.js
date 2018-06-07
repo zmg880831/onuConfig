@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const xlsx_1 = require("xlsx");
 const utilization_1 = require("./util/utilization");
+const excel_1 = require("./lib/excel");
 let wifiWorkBook = xlsx_1.readFile('./excels/集团客户业务汇总-18-0601.xls');
 let testSheetName = '三廊桥';
 let testSheet = wifiWorkBook.Sheets[testSheetName];
@@ -27,7 +28,7 @@ function readOnuRecord(workSheet, row) {
             console.log('${key} column not found');
             columnAlphabet = '';
         }
-        return [key, new utilization_1.IndexPath(row, columnAlphabet)];
+        return [key, new excel_1.IndexPath(row, columnAlphabet)];
     }));
     for (const key of indexPaths.keys()) {
         // @ts-ignore
@@ -35,7 +36,7 @@ function readOnuRecord(workSheet, row) {
     }
     let customer = readCell(workSheet, indexPaths.get('customer'));
     let service = readCell(workSheet, indexPaths.get('service'));
-    let onu = new utilization_1.Onu(service, customer);
+    let onu = new utilization_1.Onu(service, customer, "0/0/0_12");
     return onu;
 }
 for (const row of utilization_1.sequenceThrough(1, 100)) {

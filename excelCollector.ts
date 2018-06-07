@@ -1,6 +1,6 @@
 import { readFile, WorkSheet } from "xlsx";
 import { Onu, sequenceThrough } from "./util/utilization"
-import { IndexPath } from './lib/excel'
+import { IndexPath, readCell } from './lib/excel'
 
 let wifiWorkBook = readFile('./excels/集团客户业务汇总-18-0601.xls')
 
@@ -10,14 +10,6 @@ let testSheet = wifiWorkBook.Sheets[testSheetName]
 console.log(testSheet)
 
 
-function readCell(workSheet: WorkSheet, indexPath: IndexPath) {
-    let cellIndex = indexPath.range
-    let cell = workSheet[cellIndex]
-    if (cell != undefined) {
-        return cell.v
-    }
-    return `no value at index path: ${cellIndex}`
-}
 
 
 const columnAlphabets = new Map([

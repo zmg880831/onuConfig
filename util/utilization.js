@@ -9,6 +9,17 @@ function sequenceThrough(start, end) {
     return seq;
 }
 exports.sequenceThrough = sequenceThrough;
+function alphabetStrideThrough(start, end) {
+    let startIndex = start.charCodeAt(0);
+    let endIndex = end.charCodeAt(0);
+    var count = endIndex - startIndex + 1;
+    let array = Array(count).fill("");
+    let mapped = array.map((v, i) => {
+        return String.fromCharCode(i + startIndex);
+    });
+    return mapped;
+}
+exports.alphabetStrideThrough = alphabetStrideThrough;
 // onu record model
 class Onu {
     constructor(service, customer, ponport) {

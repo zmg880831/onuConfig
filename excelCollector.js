@@ -7,14 +7,6 @@ let wifiWorkBook = xlsx_1.readFile('./excels/集团客户业务汇总-18-0601.xl
 let testSheetName = '三廊桥';
 let testSheet = wifiWorkBook.Sheets[testSheetName];
 console.log(testSheet);
-function readCell(workSheet, indexPath) {
-    let cellIndex = indexPath.range;
-    let cell = workSheet[cellIndex];
-    if (cell != undefined) {
-        return cell.v;
-    }
-    return `no value at index path: ${cellIndex}`;
-}
 const columnAlphabets = new Map([
     ['service', "C"],
     ['customer', "D"]
@@ -34,8 +26,8 @@ function readOnuRecord(workSheet, row) {
         // @ts-ignore
         // console.log(`${key} :  ${indexPaths.get(key).range}`)
     }
-    let customer = readCell(workSheet, indexPaths.get('customer'));
-    let service = readCell(workSheet, indexPaths.get('service'));
+    let customer = excel_1.readCell(workSheet, indexPaths.get('customer'));
+    let service = excel_1.readCell(workSheet, indexPaths.get('service'));
     let onu = new utilization_1.Onu(service, customer, "0/0/0_12");
     return onu;
 }

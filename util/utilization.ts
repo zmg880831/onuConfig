@@ -8,6 +8,19 @@ export function sequenceThrough(start: number, end: number): number[] {
     return seq
 }
 
+
+export function alphabetStrideThrough(start: string, end: string): string[] {
+    let startIndex = start.charCodeAt(0)
+    let endIndex = end.charCodeAt(0)
+    var count = endIndex - startIndex + 1
+    let array = Array(count).fill("")
+
+    let mapped = array.map((v, i) => {
+        return String.fromCharCode(i + startIndex)
+    })
+    return mapped
+}
+
 // onu record model
 export class Onu {
     constructor(

@@ -7,8 +7,8 @@ let testWorkSheetName = testWorkBook.SheetNames[0];
 let testWorkSheet = testWorkBook.Sheets[testWorkSheetName];
 //------ test function match ----------
 // console.log("test function match start")
-let matchRow = excel_1.match(testWorkSheet, "A", /交警红绿灯/);
-console.log(`row ${matchRow} match`);
+// let matchRow = match(testWorkSheet, "A", /交警红绿灯/)
+// console.log(`row ${matchRow} match`)
 // console.log("test function match end")
 //------ test function match ----------
 //------ test readCell ----------
@@ -22,3 +22,16 @@ console.log(`row ${matchRow} match`);
 //     }
 // }
 //------ test readCell ----------
+//<<<<<< test function fetchItems <<<<<<<<<<
+let titles = new Map([
+    ['客户名称', 'A'],
+    ['VLAN', 'B'],
+    ['IP网关', 'C'],
+    ['ONU模板', 'D'],
+    ['联系方式', 'F']
+]);
+let items = excel_1.fetchItems(testWorkSheet, 3, titles);
+items.forEach((v, k) => {
+    console.log(k, ':', v);
+});
+//>>>>>> test function fetchItems >>>>>>>>>>

@@ -39,3 +39,16 @@ export function match(workSheet: WorkSheet, column: string, criteria: RegExp): n
     } while (row < 100 && isMatched == false);
     return isMatched ? row : -1
 }
+
+
+
+export function fetchItems(workSheet: WorkSheet, row: number, columnTitles: Map<string, string>): Map<string, string> {
+    let columnArray = columnTitles.entries()
+    let itemArray = Array.from(columnArray).map((entry) => {
+        let column = entry[1]
+        let cellContent = readCell(workSheet, new IndexPath(row, column))
+        let itemEntry: [string, string] = [entry[0], cellContent]
+        return itemEntry
+    })
+    return new Map(itemArray)
+}

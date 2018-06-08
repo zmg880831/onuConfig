@@ -7,6 +7,12 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "搜索",
+            "program": "${workspaceFolder}/workflow/search.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Excel Test",
             "program": "${workspaceFolder}/test/excel_test.js"
         },

@@ -30,7 +30,9 @@ let titles = new Map([
     ['ONU模板', 'D'],
     ['联系方式', 'F']
 ]);
-let items = excel_1.fetchItems(testWorkSheet, 3, titles);
+// let rowMatched = match(testWorkSheet, "A", /交警红绿灯/)
+let rowMatched = excel_1.match(testWorkSheet, "A", /瓯海公安局村居监控汇聚-郭溪所/);
+let items = excel_1.fetchItems(testWorkSheet, rowMatched, titles);
 items.forEach((v, k) => {
     console.log(k, ':', v);
 });

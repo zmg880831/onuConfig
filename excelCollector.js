@@ -28,6 +28,7 @@ function readOnuRecord(workSheet, row) {
     }
     let customer = excel_1.readCell(workSheet, indexPaths.get('customer'));
     let service = excel_1.readCell(workSheet, indexPaths.get('service'));
+    //@ts-ignore
     let onu = new utilization_1.Onu(service, customer, "0/0/0_12");
     return onu;
 }

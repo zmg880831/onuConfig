@@ -34,6 +34,7 @@ function readOnuRecord(workSheet: WorkSheet, row: number) {
     }
     let customer = readCell(workSheet, indexPaths.get('customer'))
     let service = readCell(workSheet, indexPaths.get('service'))
+    //@ts-ignore
     let onu = new Onu(service, customer, "0/0/0_12")
     return onu
 }

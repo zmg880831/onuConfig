@@ -43,3 +43,13 @@ export class Onu {
     // port: 3,
     // ontId: 18,
 // }
+export function onuInterface(onu: string): {frame: number, board: number, port: number, onuid: number } {
+    let [ports, onuid] = onu.split("_")
+    let [frame, board, port] = ports.split("/")
+    return {
+        frame: Number(frame),
+        board: Number(board),
+        port: Number(port),
+        onuid: Number(onuid),
+    }
+}

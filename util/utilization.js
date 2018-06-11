@@ -41,3 +41,14 @@ exports.Onu = Onu;
 // port: 3,
 // ontId: 18,
 // }
+function onuInterface(onu) {
+    let [ports, onuid] = onu.split("_");
+    let [frame, board, port] = ports.split("/");
+    return {
+        frame: Number(frame),
+        board: Number(board),
+        port: Number(port),
+        onuid: Number(onuid),
+    };
+}
+exports.onuInterface = onuInterface;

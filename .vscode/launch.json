@@ -13,6 +13,12 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "ImportExcel",
+            "program": "${workspaceFolder}/workflow/import_excel.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "搜索",
             "program": "${workspaceFolder}/workflow/search.js"
         },

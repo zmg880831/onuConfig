@@ -7,6 +7,12 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Algorithm",
+            "program": "${workspaceFolder}/util/algorithm.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "搜索",
             "program": "${workspaceFolder}/workflow/search.js"
         },

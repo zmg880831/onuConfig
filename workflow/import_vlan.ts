@@ -21,7 +21,7 @@ let titles = new Map([
 
 
 
-console.log('try to connect to database onu info')
+// console.log('try to connect to database onu info')
 let connection = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
@@ -35,24 +35,47 @@ let connection = mysql.createConnection({
 
 const insertString = 'INSERT INTO vlan (service, site, vlan) VALUES (?, ?, ?)'
 
-let rowRange = sequenceThrough(2, 10)
+let rowRange = sequenceThrough(1, 100)
 rowRange.forEach((row) => {
+    console.log(`-------------row ${row} start------------------`)
     let items = fetchItems(testWorkSheet, row, titles)
-    if (items != undefined) {
-        let vlanToWrite = [
-            items.get('业务'),
-            items.get('机房'),
-            items.get('VLAN')
-        ]
-        //@ts-ignore
-        // connection.query(insertString, vlanToWrite, (err, rows, fields) => {
-        //     if (err) {
-        //         console.log(err)
-        //     }
-        // })
-    } else {
-        console.log(row, '行 资料不全')
+    let isComplete = true
+    for (const value of items.values()) {
+        if (value == undefined) {
+            isComplete = false
+        }
     }
 
+    let vlanToWrite = [
+        items.get('业务'),
+        items.get('机房'),
+        items.get('VLAN')
+    ]
+
+    console.log(vlanToWrite)
+    // check vlan cell is number
+    let vlanIsNumber = true
+    let vlanString = items.get('VLAN')
+    if (vlanString != undefined) {
+        vlanIsNumber = !isNaN(parseInt(vlanString))
+        if (!vlanIsNumber) {
+            console.log(vlanString, "is not a number")
+        }
+    }
+
+    if (isComplete && vlanIsNumber) {
+
+        console.log("√√√√√√√√√√√√  资料完整  √√√√√√√√√√√√")
+        //@ts-ignore
+        connection.query(insertString, vlanToWrite, (err, rows, fields) => {
+            if (err) {
+                console.log(err)
+            }
+        })
+    } else {
+        console.log("××××××××××××  资料错误  ××××××××××××")
+    }
+
+    console.log(`-------------row ${row} end------------------`)
 
 })

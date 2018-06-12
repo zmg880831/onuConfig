@@ -19,6 +19,12 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "ImportVlan",
+            "program": "${workspaceFolder}/workflow/import_vlan.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "搜索",
             "program": "${workspaceFolder}/workflow/search.js"
         },

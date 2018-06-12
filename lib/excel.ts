@@ -42,7 +42,7 @@ export function match(workSheet: WorkSheet, column: string, criteria: RegExp): n
 
 
 
-export function fetchItems(workSheet: WorkSheet, row: number, columnTitles: Map<string, string>): Map<string, string> {
+export function fetchItems(workSheet: WorkSheet, row: number, columnTitles: Map<string, string>): Map<string, string> | undefined {
     let columnArray = columnTitles.entries()
     let itemArray = Array.from(columnArray).map((entry) => {
         let column = entry[1]
@@ -50,5 +50,15 @@ export function fetchItems(workSheet: WorkSheet, row: number, columnTitles: Map<
         let itemEntry: [string, string] = [entry[0], cellContent]
         return itemEntry
     })
-    return new Map(itemArray)
+    //@ts-ignore
+    let isEmpty = itemArray.reduce((result, item) => {
+        return item[1].match(/empty/) && result
+    }, false)
+    let itemMap = new Map(itemArray)
+    itemMap.forEach((value, key) => {
+        console.log(key, ":", value)
+    })
+    console.log("资料不全")
+    console.log("---------------------")
+    return isEmpty ? undefined : itemMap
 }

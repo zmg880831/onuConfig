@@ -27,15 +27,25 @@ let connection = mysql.createConnection({
     password: '56880707',
     database: 'onu_infomation'
 });
-const insertString = 'INSERT INTO ont (service_name, customer_name, port) VALUES (?, ?, ?)';
-let onuToWrite = [
-    items.get('service'),
-    items.get('customer'),
-    interfaces.port
-];
-//@ts-ignore
-connection.query(insertString, onuToWrite, (err, rows, fields) => {
-    if (err) {
-        console.log(err);
+for (const key in connection) {
+    if (connection.hasOwnProperty(key)) {
+        const element = connection[key];
+        console.log(key, element);
     }
-});
+}
+console.log(connection);
+// const showAllString = 'SELECT * FROM ont'
+// const insertString = 'INSERT INTO ont (service_name, customer_name, board, port, ont_id) VALUES (?, ?, ?, ?, ?)'
+// let onuToWrite = [
+//     items.get('service'),
+//     items.get('customer'),
+//     interfaces.board,
+//     interfaces.port,
+//     interfaces.onuid
+// ]
+// //@ts-ignore
+// connection.query(insertString, onuToWrite, (err, rows, fields) => {
+//     if (err) {
+//         console.log(err)
+//     }
+// })

@@ -24,7 +24,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 //     console.log(i)
 // }
 // console.log(s)
-//--------------------pin yin------------------
+// --------------------pin yin------------------
 // import pinyin from 'pinyin'
 // let converted = pinyin(
 //     "中国",

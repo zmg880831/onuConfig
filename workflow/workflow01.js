@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const excel_1 = require("../lib/excel");
 const xlsx_1 = require("xlsx");
-const utilization_1 = require("../util/utilization");
+const py = require('pinyin');
 // search matched row and fetch desired column
 //@ts-ignore
 //@ts-ignore
@@ -38,36 +38,42 @@ function matchFetch(options) {
     }
 }
 // work flow 
-let serviceName = /纱帽河-柴桥巷/;
-let summaryTableOption = {
-    filePath: './excels/workflow_1/集团客户业务汇总-18-0611.xls',
-    match: {
-        column: "D",
-        criteria: /温州市二幼大门旁/
-    },
-    columnTitles: [
-        ['VLAN', 'E'],
-        ['Pon', 'B']
-    ]
-};
-summaryTableOption.match.criteria = serviceName;
-let summary = matchFetch(summaryTableOption);
-if (summary != undefined) {
-    utilization_1.prettyLog(summary);
-}
-// 获取 MAC 地址
-let macOption = {
-    filePath: './excels/workflow_1/东明路点位迁改-新送一路信号.xlsx',
-    match: {
-        column: "D",
-        criteria: /dji/
-    },
-    columnTitles: [
-        ['MAC', 'J']
-    ]
-};
-macOption.match.criteria = serviceName;
-let mac = matchFetch(macOption);
-if (mac != undefined) {
-    utilization_1.prettyLog(mac);
-}
+let serviceName = /GA8东明路-株浦路路口/;
+let str = String(serviceName);
+console.log(str);
+let converted = py(str, {
+    style: py.STYLE_TONE2,
+}).join("");
+console.log(converted);
+// let summaryTableOption = {
+//     filePath: './excels/workflow_1/集团客户业务汇总-18-0611.xls',
+//     match: {
+//         column: "D",
+//         criteria: /djifij/
+//     },
+//     columnTitles: [
+//         ['VLAN', 'E'],
+//         ['Pon', 'B']
+//     ]
+// }
+// summaryTableOption.match.criteria = serviceName
+// let summary = matchFetch(summaryTableOption);
+// if (summary != undefined) {
+//     prettyLog(summary)
+// }
+// // 获取 MAC 地址
+// let macOption = {
+//     filePath: './excels/workflow_1/东明路点位迁改-新送一路信号.xlsx',
+//     match: {
+//         column: "D",
+//         criteria: /dji/
+//     },
+//     columnTitles: [
+//         ['MAC', 'J']
+//     ]
+// }
+// macOption.match.criteria = serviceName
+// let mac = matchFetch(macOption);
+// if (mac != undefined) {
+//     prettyLog(mac)
+// }

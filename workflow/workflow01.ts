@@ -3,7 +3,7 @@ import path from 'path'
 import { allSheets, IndexPath, readCell, match, fetchItems } from '../lib/excel'
 import { readFile, WorkSheet } from "xlsx";
 import { sequenceThrough, alphabetStrideThrough, prettyLog } from '../util/utilization'
-
+const py = require('pinyin')
 
 
 
@@ -48,42 +48,70 @@ function matchFetch(options) {
 
 // work flow 
 
-let serviceName = /纱帽河-柴桥巷/
+let serviceName = /GA8东明路-株浦路路口/
 
-let summaryTableOption = {
-    filePath: './excels/workflow_1/集团客户业务汇总-18-0611.xls',
-    match: {
-        column: "D",
-        criteria: /温州市二幼大门旁/
-    },
-    columnTitles: [
-        ['VLAN', 'E'],
-        ['Pon', 'B']
-    ]
-}
-summaryTableOption.match.criteria = serviceName
-
-let summary = matchFetch(summaryTableOption);
-if (summary != undefined) {
-    prettyLog(summary)
-}
-
-// 获取 MAC 地址
-let macOption = {
-    filePath: './excels/workflow_1/东明路点位迁改-新送一路信号.xlsx',
-    match: {
-        column: "D",
-        criteria: /dji/
-    },
-    columnTitles: [
-        ['MAC', 'J']
-    ]
-}
-
-macOption.match.criteria = serviceName
+let str = String(serviceName)
+console.log(str)
 
 
-let mac = matchFetch(macOption);
-if (mac != undefined) {
-    prettyLog(mac)
-}
+let converted = py(
+    str,
+    {
+        style: py.STYLE_TONE2,
+    }
+).join("")
+console.log(converted)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let summaryTableOption = {
+//     filePath: './excels/workflow_1/集团客户业务汇总-18-0611.xls',
+//     match: {
+//         column: "D",
+//         criteria: /djifij/
+//     },
+//     columnTitles: [
+//         ['VLAN', 'E'],
+//         ['Pon', 'B']
+//     ]
+// }
+// summaryTableOption.match.criteria = serviceName
+
+// let summary = matchFetch(summaryTableOption);
+// if (summary != undefined) {
+//     prettyLog(summary)
+// }
+
+// // 获取 MAC 地址
+// let macOption = {
+//     filePath: './excels/workflow_1/东明路点位迁改-新送一路信号.xlsx',
+//     match: {
+//         column: "D",
+//         criteria: /dji/
+//     },
+//     columnTitles: [
+//         ['MAC', 'J']
+//     ]
+// }
+
+// macOption.match.criteria = serviceName
+
+
+// let mac = matchFetch(macOption);
+// if (mac != undefined) {
+//     prettyLog(mac)
+// }

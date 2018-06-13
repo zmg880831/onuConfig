@@ -41,3 +41,9 @@ exports.Onu = Onu;
 // port: 3,
 // ontId: 18,
 // }
+function prettyLog(map) {
+    map.forEach((v, k) => {
+        console.log(`${k} : ${v}`);
+    });
+}
+exports.prettyLog = prettyLog;

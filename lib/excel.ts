@@ -1,7 +1,7 @@
 
 // Excel range index path helper function
 
-import { WorkSheet } from "xlsx";
+import { WorkSheet, WorkBook } from "xlsx";
 
 export class IndexPath {
     row: number
@@ -51,4 +51,12 @@ export function fetchItems(workSheet: WorkSheet, row: number, columnTitles: Map<
         return itemEntry
     })
     return new Map(itemArray)
+}
+
+
+export function allSheets(workBook: WorkBook): WorkSheet[] {
+    let workSheetNames = workBook.SheetNames
+    return workSheetNames.map((sheetName) => {
+        return workBook.Sheets[sheetName]
+    })
 }

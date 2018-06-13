@@ -7,6 +7,12 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "WorkFlow 01",
+            "program": "${workspaceFolder}/workflow/workflow01.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Algorithm",
             "program": "${workspaceFolder}/util/algorithm.js"
         },

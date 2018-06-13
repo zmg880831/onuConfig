@@ -43,3 +43,9 @@ export class Onu {
     // port: 3,
     // ontId: 18,
 // }
+
+export function prettyLog(map: Map<string, string>) {
+    map.forEach((v, k) => {
+        console.log(`${k} : ${v}`)
+    })
+}

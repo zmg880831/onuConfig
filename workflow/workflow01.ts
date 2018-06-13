@@ -11,10 +11,10 @@ import { sequenceThrough, alphabetStrideThrough, prettyLog } from '../util/utili
 //@ts-ignore
 //@ts-ignore
 function matchFetch(options) {
-    let workbook = readFile(summaryTableOption.filePath);
+    let workbook = readFile(options.filePath);
     let sheets = allSheets(workbook);
     let results = sheets.map((sheet, index) => {
-        let rowMatched = match(sheet, summaryTableOption.match.column, summaryTableOption.match.criteria);
+        let rowMatched = match(sheet, options.match.column, options.match.criteria);
         if (rowMatched != -1) {
             return {
                 matchedSheet: sheet,
@@ -35,7 +35,7 @@ function matchFetch(options) {
             matched.matchedSheet, 
             matched.row,
             //@ts-ignore
-            new Map(summaryTableOption.columnTitles)
+            new Map(options.columnTitles)
         );
         items.set('site', matched.sheetName)
         return items
@@ -46,7 +46,10 @@ function matchFetch(options) {
 
 
 
-//
+// work flow 
+
+let serviceName = /纱帽河-柴桥巷/
+
 let summaryTableOption = {
     filePath: './excels/workflow_1/集团客户业务汇总-18-0611.xls',
     match: {
@@ -58,7 +61,29 @@ let summaryTableOption = {
         ['Pon', 'B']
     ]
 }
+summaryTableOption.match.criteria = serviceName
+
 let summary = matchFetch(summaryTableOption);
 if (summary != undefined) {
     prettyLog(summary)
+}
+
+// 获取 MAC 地址
+let macOption = {
+    filePath: './excels/workflow_1/东明路点位迁改-新送一路信号.xlsx',
+    match: {
+        column: "D",
+        criteria: /dji/
+    },
+    columnTitles: [
+        ['MAC', 'J']
+    ]
+}
+
+macOption.match.criteria = serviceName
+
+
+let mac = matchFetch(macOption);
+if (mac != undefined) {
+    prettyLog(mac)
 }

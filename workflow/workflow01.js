@@ -42,7 +42,7 @@ let summaryTableOption = {
     filePath: './excels/workflow_1/集团客户业务汇总-18-0611.xls',
     match: {
         column: "D",
-        criteria: /温州中油冶金加油站有限公司/
+        criteria: /温州市二幼大门旁/
     },
     columnTitles: [
         ['VLAN', 'E'],

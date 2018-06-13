@@ -36,7 +36,7 @@ export function match(workSheet: WorkSheet, column: string, criteria: RegExp): n
         } else {
             row += 1
         }
-    } while (row < 100 && isMatched == false);
+    } while (row < 5000 && isMatched == false);
     return isMatched ? row : -1
 }
 

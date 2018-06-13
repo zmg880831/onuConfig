@@ -49,3 +49,30 @@ export function prettyLog(map: Map<string, string>) {
         console.log(`${k} : ${v}`)
     })
 }
+
+export function onuConfigCommand(options: {}) {
+//@ts-ignore
+    return `int epon 0/${options.board}
+
+    ont add ${options.port} ${options.ontid} mac-auth ${options.mac} oam ont-lineprofile-id 2 ont-srvprofile-id 2 desc ${options.pinyin}
+    
+    ont port native-vlan ${options.port} ${options.ontid} eth 3 vlan ${options.vlan}
+    ont port native-vlan ${options.port} ${options.ontid} eth 4 vlan ${options.vlan}
+    quit
+    
+    service-port vlan ${options.vlan} epon 0/${options.board}/${options.port} ont ${options.ontid} multi-service user-vlan ${options.vlan} tag-transform translate 
+    
+    `
+}
+
+
+export function onuInterface(onu: string) {
+    let [ports, onuid] = onu.split("_")
+    let [frame, board, port] = ports.split("/")
+    return {
+        frame: frame,
+        board: board,
+        port: port,
+        onuid: onuid,
+    }
+}

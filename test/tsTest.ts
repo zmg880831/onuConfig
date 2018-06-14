@@ -18,7 +18,7 @@
 // console.log(s)
 
 
-//--------------------pin yin------------------
+// --------------------pin yin------------------
 // import pinyin from 'pinyin'
 
 // let converted = pinyin(

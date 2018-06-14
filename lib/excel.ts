@@ -1,7 +1,7 @@
 
 // Excel range index path helper function
 
-import { WorkSheet } from "xlsx";
+import { WorkSheet, WorkBook } from "xlsx";
 
 export class IndexPath {
     row: number
@@ -33,7 +33,7 @@ export function match(workSheet: WorkSheet, column: string, criteria: RegExp): n
         } else {
             row += 1
         }
-    } while (row < 100 && isMatched == false);
+    } while (row < 5000 && isMatched == false);
     return isMatched ? row : -1
 }
 
@@ -47,6 +47,18 @@ export function fetchItems(workSheet: WorkSheet, row: number, columnTitles: Map<
         let itemEntry: [string, string | undefined] = [entry[0], cellContent]
         return itemEntry
     })
+<<<<<<< HEAD
     let itemMap = new Map(itemArray)
     return itemMap
+=======
+    return new Map(itemArray)
+}
+
+
+export function allSheets(workBook: WorkBook): WorkSheet[] {
+    let workSheetNames = workBook.SheetNames
+    return workSheetNames.map((sheetName) => {
+        return workBook.Sheets[sheetName]
+    })
+>>>>>>> master
 }

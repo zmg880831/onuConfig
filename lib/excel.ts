@@ -56,6 +56,7 @@ export function fetchItems(workSheet: WorkSheet, row: number, columnTitles: Map<
 export function fetchOnt(workBook: WorkBook, sheetName: string, row: number, column: OntColumn): Ont | undefined {
 
     let sheet = workBook.Sheets[sheetName]
+    // read interface
     let interfaceString = readCell(sheet, new IndexPath(row, column.onuInterface))
     if (interfaceString == undefined) {
         return undefined
@@ -64,13 +65,20 @@ export function fetchOnt(workBook: WorkBook, sheetName: string, row: number, col
     if (onuInterfaces == undefined) {
         return undefined
     }
-
+    // read vlan
+    let vlan = 0
+    let vlanString = readCell(sheet, new IndexPath(row, column.vlan))
+    if (vlanString != undefined) {
+        if (!isNaN(Number(vlanString))) {
+            vlan = Number(vlanString)
+        }
+    }
     return {
         olt: sheetName,
         board: onuInterfaces.board,
         port: onuInterfaces.port,
         onuid: onuInterfaces.onuid,
-        vlan: 0,
+        vlan: vlan,
         description: '',
         customer: '',
         mac: '',

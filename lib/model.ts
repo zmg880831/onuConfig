@@ -3,7 +3,7 @@ export interface Ont {
     board: number,
     port: number, 
     onuid: number,
-    vlan: number,
+    vlan?: number,
     description: string, 
     customer: string, 
     mac?: string,

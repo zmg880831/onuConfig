@@ -20,7 +20,13 @@ let monitorColumnTitle = {
 };
 let fetchedOnt = excel_1.fetchOnt(testWorkBook, testWorkSheetName, 3, monitorColumnTitle);
 if (fetchedOnt != undefined) {
-    console.log(fetchedOnt);
+    for (const key in fetchedOnt) {
+        if (fetchedOnt.hasOwnProperty(key)) {
+            //@ts-ignore
+            const element = fetchedOnt[key];
+            console.log(`${key} : ${element}`);
+        }
+    }
 }
 else {
     console.log("ont data is not completed!");

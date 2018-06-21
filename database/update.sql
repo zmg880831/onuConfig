@@ -1,0 +1,1 @@
+update optical_terminal set description = "新城大道广电中心门口监控" where olt = "广电1" and board = 5 and port = 3 and onuid = 11;

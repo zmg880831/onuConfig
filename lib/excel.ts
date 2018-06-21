@@ -27,6 +27,7 @@ export function match(workSheet: WorkSheet, column: string, criteria: RegExp): n
     let isMatched = false
     do {
         let cellContent = readCell(workSheet, new IndexPath(row, column))
+        //@ts-ignore
         let matchedArray = cellContent.match(criteria)
         if (matchedArray != null) {
             isMatched = true

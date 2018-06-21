@@ -47,10 +47,6 @@ export function fetchItems(workSheet: WorkSheet, row: number, columnTitles: Map<
         let itemEntry: [string, string | undefined] = [entry[0], cellContent]
         return itemEntry
     })
-<<<<<<< HEAD
-    let itemMap = new Map(itemArray)
-    return itemMap
-=======
     return new Map(itemArray)
 }
 
@@ -60,5 +56,4 @@ export function allSheets(workBook: WorkBook): WorkSheet[] {
     return workSheetNames.map((sheetName) => {
         return workBook.Sheets[sheetName]
     })
->>>>>>> master
 }

@@ -43,16 +43,6 @@ export class Onu {
     // port: 3,
     // ontId: 18,
 // }
-<<<<<<< HEAD
-export function onuInterface(onu: string): {frame: number, board: number, port: number, onuid: number } {
-    let [ports, onuid] = onu.split("_")
-    let [frame, board, port] = ports.split("/")
-    return {
-        frame: Number(frame),
-        board: Number(board),
-        port: Number(port),
-        onuid: Number(onuid),
-=======
 
 export function prettyLog(map: Map<string, string>) {
     map.forEach((v, k) => {
@@ -84,6 +74,5 @@ export function onuInterface(onu: string) {
         board: board,
         port: port,
         onuid: onuid,
->>>>>>> master
     }
 }

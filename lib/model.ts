@@ -1,0 +1,16 @@
+interface Ont {
+    olt: string,
+    board: number,
+    port: number, 
+    onuid: number,
+    vlan: number,
+    description: string, 
+    customer: string, 
+    mac?: string,
+    serial?: string,
+    access?: string,
+    fiber?: string,
+    odf?: string,
+    splitter1?: string,
+    splitter2?: string,
+}

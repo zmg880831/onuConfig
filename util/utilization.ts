@@ -76,3 +76,14 @@ export function onuInterface(onu: string) {
         onuid: onuid,
     }
 }
+
+export function isMacAddress(mac: string): boolean {
+    let filtered = mac.replace(/[-:\.]/g, '')
+    return /[A-Fa-f\d]{12}/.test(filtered)
+}
+
+export function formatMacAddress(mac: string): string {
+    let filtered = mac.replace(/[-:\.]/g, '')
+    let uppercase = filtered.toUpperCase()
+    return uppercase
+}

@@ -2,8 +2,8 @@
 // Excel range index path helper function
 
 import { WorkSheet, WorkBook } from "xlsx";
-import { OntColumn, Ont, OnuInterface, convertOnu} from "./model"
-import { onuInterface } from "../util/utilization";
+import { OntColumn, Ont, OnuInterface, convertOnu } from "./model"
+import { onuInterface, isMacAddress, formatMacAddress } from "../util/utilization";
 
 export class IndexPath {
     row: number
@@ -81,8 +81,23 @@ export function fetchOnt(workBook: WorkBook, sheetName: string, row: number, col
     if (customer == undefined) { return undefined }
     // read mac
     let mac = readCell(sheet, new IndexPath(row, column.mac))
-    // read serial
-    let serial = readCell(sheet, new IndexPath(row, column.serial))
+    if (mac != undefined && isMacAddress(mac)) {
+        mac = formatMacAddress(mac)
+    } else {
+        mac = 'none'
+    }
+    // read pon access mode
+    let access = readCell(sheet, new IndexPath(row, column.access))
+    if (access != undefined && /[EG]PON/.test(access)) {
+        access = access
+    } else {
+        access = 'format error'
+    }
+    // read fiber
+    let fiber = readCell(sheet, new IndexPath(row, column.fiber))
+    let odf = readCell(sheet, new IndexPath(row, column.odf))
+    let splitter1 = readCell(sheet, new IndexPath(row, column.splitter1))
+    let splitter2 = readCell(sheet, new IndexPath(row, column.splitter2))
     return {
         olt: sheetName,
         board: onuInterfaces.board,
@@ -92,12 +107,12 @@ export function fetchOnt(workBook: WorkBook, sheetName: string, row: number, col
         description: description,
         customer: customer,
         mac: mac,
-        serial: serial,
-        access: '',
-        fiber: '',
-        odf: '',
-        splitter1: '',
-        splitter2: '',
+        serial: '',
+        access: access,
+        fiber: fiber,
+        odf: odf,
+        splitter1: splitter1,
+        splitter2: splitter2,
     }
 }
 

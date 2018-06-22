@@ -73,3 +73,14 @@ function onuInterface(onu) {
     };
 }
 exports.onuInterface = onuInterface;
+function isMacAddress(mac) {
+    let filtered = mac.replace(/[-:\.]/g, '');
+    return /[A-Fa-f\d]{12}/.test(filtered);
+}
+exports.isMacAddress = isMacAddress;
+function formatMacAddress(mac) {
+    let filtered = mac.replace(/[-:\.]/g, '');
+    let uppercase = filtered.toUpperCase();
+    return uppercase;
+}
+exports.formatMacAddress = formatMacAddress;

@@ -18,7 +18,7 @@ let monitorColumnTitle = {
     splitter1: 'F',
     splitter2: 'I',
 };
-let fetchedOnt = excel_1.fetchOnt(testWorkBook, testWorkSheetName, 19, monitorColumnTitle);
+let fetchedOnt = excel_1.fetchOnt(testWorkBook, testWorkSheetName, 85, monitorColumnTitle);
 if (fetchedOnt != undefined) {
     for (const key in fetchedOnt) {
         if (fetchedOnt.hasOwnProperty(key)) {

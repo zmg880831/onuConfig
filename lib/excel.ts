@@ -3,7 +3,7 @@
 
 import { WorkSheet, WorkBook } from "xlsx";
 import { OntColumn, Ont, OnuInterface, convertOnu } from "./model"
-import { onuInterface, isMacAddress, formatMacAddress } from "../util/utilization";
+import { onuInterface, isMacAddress, formatMacAddress, sequenceThrough } from "../util/utilization";
 
 export class IndexPath {
     row: number
@@ -61,7 +61,7 @@ export function fetchOnt(workBook: WorkBook, sheetName: string, row: number, col
     if (interfaceString == undefined) {
         return undefined
     }
-    let onuInterfaces = convertOnu(interfaceString) 
+    let onuInterfaces = convertOnu(interfaceString)
     if (onuInterfaces == undefined) {
         return undefined
     }
@@ -107,13 +107,25 @@ export function fetchOnt(workBook: WorkBook, sheetName: string, row: number, col
         description: description,
         customer: customer,
         mac: mac,
-        serial: '',
+        serial: undefined,
         access: access,
         fiber: fiber,
         odf: odf,
         splitter1: splitter1,
         splitter2: splitter2,
     }
+}
+
+
+export function fetchOnts(workBook: WorkBook, sheetName: string, column: OntColumn): Ont[] {
+    let onts = sequenceThrough(2, 30).map((row) => {
+        return fetchOnt(workBook, sheetName, row, column)
+    })
+    let filtered = onts.filter((ont) => {
+        return ont != undefined
+    })
+    //@ts-ignore
+    return filtered
 }
 
 export function allSheets(workBook: WorkBook): WorkSheet[] {

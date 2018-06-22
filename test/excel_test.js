@@ -18,19 +18,17 @@ let monitorColumnTitle = {
     splitter1: 'F',
     splitter2: 'I',
 };
-let fetchedOnt = excel_1.fetchOnt(testWorkBook, testWorkSheetName, 85, monitorColumnTitle);
-if (fetchedOnt != undefined) {
-    for (const key in fetchedOnt) {
-        if (fetchedOnt.hasOwnProperty(key)) {
+let fetchedOnts = excel_1.fetchOnts(testWorkBook, testWorkSheetName, monitorColumnTitle);
+fetchedOnts.forEach((ont, index) => {
+    console.log(`---------------- ${index + 1} -----------------`);
+    for (const key in ont) {
+        if (ont.hasOwnProperty(key)) {
             //@ts-ignore
-            const element = fetchedOnt[key];
+            const element = ont[key];
             console.log(`${key} : ${element}`);
         }
     }
-}
-else {
-    console.log("ont data is not completed!");
-}
+});
 //------ test function match ----------
 // console.log("test function match start")
 // let matchRow = match(testWorkSheet, "A", /交警红绿灯/)

@@ -1,11 +1,11 @@
 
 insert into optical_terminal (
-    description,
-    customer,
     olt,
     board,
     port,
     onuid,
+    description,
+    customer,
     mac,
     serial,
     vlan,
@@ -16,12 +16,12 @@ insert into optical_terminal (
     splitter2
 )
 select 
-    "哼哈大厦",
-    "龙湾",
     "广电1",
     5,
     3,
     11,
+    "哼哈大厦",
+    "龙湾",
     "0023-ED8C-09AE",
     "0923995884504958",
     "2109",

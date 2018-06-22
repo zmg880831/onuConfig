@@ -1,4 +1,4 @@
-import { IndexPath, readCell, match, fetchItems, fetchOnt } from '../lib/excel'
+import { IndexPath, readCell, match, fetchItems, fetchOnt, fetchOnts } from '../lib/excel'
 import { readFile, WorkSheet } from "xlsx";
 import { sequenceThrough, alphabetStrideThrough } from '../util/utilization'
 import { OntColumn } from '../lib/model'
@@ -11,8 +11,8 @@ let testWorkSheet = testWorkBook.Sheets[testWorkSheetName]
 let monitorColumnTitle: OntColumn = {
     onuInterface: 'B',
     vlan: 'E',
-    description: 'D', 
-    customer: 'C', 
+    description: 'D',
+    customer: 'C',
     mac: 'J',
     serial: 'J',
     access: 'A',
@@ -23,18 +23,18 @@ let monitorColumnTitle: OntColumn = {
 }
 
 
-let fetchedOnt = fetchOnt(testWorkBook, testWorkSheetName, 85, monitorColumnTitle)
-if (fetchedOnt != undefined) {
-    for (const key in fetchedOnt) {
-        if (fetchedOnt.hasOwnProperty(key)) {
+let fetchedOnts = fetchOnts(testWorkBook, testWorkSheetName, monitorColumnTitle)
+
+fetchedOnts.forEach((ont, index) => {
+    console.log(`---------------- ${index + 1} -----------------`)
+    for (const key in ont) {
+        if (ont.hasOwnProperty(key)) {
             //@ts-ignore
-            const element = fetchedOnt[key];
+            const element = ont[key];
             console.log(`${key} : ${element}`)
         }
     }
-} else {
-    console.log("ont data is not completed!")
-}
+});
 
 
 //------ test function match ----------

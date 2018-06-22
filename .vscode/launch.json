@@ -13,6 +13,12 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Import Monitor",
+            "program": "${workspaceFolder}/workflow/import_monitor.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "ImportExcel",
             "program": "${workspaceFolder}/workflow/import_excel.js"
         },

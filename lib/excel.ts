@@ -118,7 +118,7 @@ export function fetchOnt(workBook: WorkBook, sheetName: string, row: number, col
 
 
 export function fetchOnts(workBook: WorkBook, sheetName: string, column: OntColumn): Ont[] {
-    let onts = sequenceThrough(2, 30).map((row) => {
+    let onts = sequenceThrough(2, 3000).map((row) => {
         return fetchOnt(workBook, sheetName, row, column)
     })
     let filtered = onts.filter((ont) => {

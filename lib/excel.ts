@@ -73,16 +73,26 @@ export function fetchOnt(workBook: WorkBook, sheetName: string, row: number, col
             vlan = Number(vlanString)
         }
     }
+    // read description
+    let description = readCell(sheet, new IndexPath(row, column.description))
+    if (description == undefined) { return undefined }
+    // read customer
+    let customer = readCell(sheet, new IndexPath(row, column.customer))
+    if (customer == undefined) { return undefined }
+    // read mac
+    let mac = readCell(sheet, new IndexPath(row, column.mac))
+    // read serial
+    let serial = readCell(sheet, new IndexPath(row, column.serial))
     return {
         olt: sheetName,
         board: onuInterfaces.board,
         port: onuInterfaces.port,
         onuid: onuInterfaces.onuid,
         vlan: vlan,
-        description: '',
-        customer: '',
-        mac: '',
-        serial: '',
+        description: description,
+        customer: customer,
+        mac: mac,
+        serial: serial,
         access: '',
         fiber: '',
         odf: '',

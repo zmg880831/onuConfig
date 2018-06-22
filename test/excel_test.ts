@@ -23,7 +23,7 @@ let monitorColumnTitle: OntColumn = {
 }
 
 
-let fetchedOnt = fetchOnt(testWorkBook, testWorkSheetName, 3, monitorColumnTitle)
+let fetchedOnt = fetchOnt(testWorkBook, testWorkSheetName, 19, monitorColumnTitle)
 if (fetchedOnt != undefined) {
     for (const key in fetchedOnt) {
         if (fetchedOnt.hasOwnProperty(key)) {
